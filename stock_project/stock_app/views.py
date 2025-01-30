@@ -8,6 +8,9 @@ from django.contrib.auth import authenticate, login
 from .models import stock_info
 from .ai import ai_advice
 from threading import Thread
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def homepage(request):
     return render(request, 'homepage.html', {})
@@ -243,7 +246,7 @@ DB_CONFIG = {
     "host": "investment-db-restaurant-solver.c.aivencloud.com",
     "port": "27218",
     "user": "avnadmin",
-    "password": "AVNS_ZYh3FUdlS7eJkbiS9da",
+    "password": os.getenv("AIVEN_DB_PASSWORD"),
     "database": "defaultdb",
 }
 def get_db_connection():
