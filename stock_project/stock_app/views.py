@@ -156,10 +156,8 @@ def submit_answers(request):
             for key in parameters if maxParameters.get(key, 0) != 0
         }
 
-        # Determine investment recommendations
         best_match, potential_matches = chooseVehicle(preferences)
 
-        # ✅ Return response immediately to allow frontend redirection
         response = JsonResponse({
             "message": "Investment recommendation is being processed.",
             "recommended_vehicle": best_match,
@@ -172,7 +170,6 @@ def submit_answers(request):
                 ai_explanation = ai_advice(preferences, best_match)
                 print("✅ AI Generated Response:", ai_explanation)
 
-                # ✅ Open a new database connection for the AI processing
                 db_conn = get_db_connection()
                 if not db_conn:
                     print("❌ AI Processing Error: Database connection failed")
@@ -180,16 +177,14 @@ def submit_answers(request):
                 
                 db_cursor = db_conn.cursor()
 
-                # ✅ Ensure correct database is selected before queries
                 db_cursor.execute("USE userinfo")
 
-                # ✅ Update AI-generated advice
                 db_cursor.execute(
                     "UPDATE users SET AI_advice = %s WHERE username = %s",
                     (ai_explanation, username)
                 )
                 db_conn.commit()
-                print("✅ AI Advice Saved to DB for:", username)
+                print("AI Advice Saved to DB for:", username)
 
                 db_cursor.close()
                 db_conn.close()
@@ -197,7 +192,6 @@ def submit_answers(request):
             except Exception as e:
                 print("❌ AI Processing Error:", str(e))
 
-        # ✅ Start AI processing in a new thread
         thread = Thread(target=process_ai)
         thread.start()
 
@@ -242,11 +236,14 @@ def chooseVehicle(preferences):
 
     return best_match, potential_matches
 
+password = os.getenv("AIVEN_DB_PASSWORD")
+if not password:
+    print("❌ Error: Database password is not set.")
 DB_CONFIG = {
     "host": "investment-db-restaurant-solver.c.aivencloud.com",
     "port": "27218",
     "user": "avnadmin",
-    "password": os.getenv("AIVEN_DB_PASSWORD"),
+    "password": password,
     "database": "defaultdb",
 }
 def get_db_connection():

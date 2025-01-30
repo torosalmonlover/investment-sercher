@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Personalized Investment Recommendations</title>
+    <title>あなたに最適な投資のおすすめ</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #f5f7fa; color: #333; margin: 0; padding: 0; }
         header { background-color: #0047ab; color: #fff; padding: 20px; text-align: center; }
@@ -19,55 +19,55 @@
 </head>
 <body>
     <header>
-        <h1>Your Personalized Investment Recommendations</h1>
-        <p>Based on your preferences, we've tailored these investment opportunities for you.</p>
+        <h1>あなたに最適な投資のおすすめ</h1>
+        <p>あなたの投資の好みに基づいた、おすすめの投資オプションをご紹介します。</p>
     </header>
 
     <div class="main">
         {% if recommendations.recommended_vehicle %}
             <div class="recommendation">
-                <h2>Recommended: {{ recommendations.recommended_vehicle.name }}</h2>
-                <p>Estimated Growth: {{ recommendations.recommended_vehicle.EstimatedGrowth }}</p>
-                <p>Risk Level: {{ recommendations.recommended_vehicle.RiskLabel }}</p>
-                <p>Liquidity: {{ recommendations.recommended_vehicle.LiquidityLabel }}</p>
+                <h2>おすすめ: {{ recommendations.recommended_vehicle.name }}</h2>
+                <p>予想成長率: {{ recommendations.recommended_vehicle.EstimatedGrowth }}</p>
+                <p>リスクレベル: {{ recommendations.recommended_vehicle.RiskLabel }}</p>
+                <p>流動性: {{ recommendations.recommended_vehicle.LiquidityLabel }}</p>
                 <div class="cta">
-                    <button onclick="viewInvestmentDetails('{{ recommendations.recommended_vehicle.name }}')">View More</button>
+                    <button onclick="viewInvestmentDetails('{{ recommendations.recommended_vehicle.name }}')">詳細を見る</button>
                 </div>
             </div>
 
-            <h2>Additional Investment Options</h2>
+            <h2>その他の投資オプション</h2>
             <div class="additional-recommendations">
                 {% for key, investment in recommendations.items %}
                     {% if key != "recommended_vehicle" and investment %}
                         <div class="card">
                             <h3>{{ investment.name }}</h3>
-                            <p>Growth Potential: {{ investment.EstimatedGrowth }}</p>
-                            <p>Risk Level: {{ investment.RiskLabel }}</p>
-                            <p>Liquidity: {{ investment.LiquidityLabel }}</p>
+                            <p>成長の可能性: {{ investment.EstimatedGrowth }}</p>
+                            <p>リスクレベル: {{ investment.RiskLabel }}</p>
+                            <p>流動性: {{ investment.LiquidityLabel }}</p>
                         </div>
                     {% endif %}
                 {% endfor %}
             </div>
 
-            <!-- AI-Generated Explanation -->
+            <!-- AIによる投資アドバイス -->
             <div class="ai-response">
-                <h2>AI Investment Advice</h2>
+                <h2>AIによる投資アドバイス</h2>
                 <p>{{ ai_advice }}</p>
             </div>
 
         {% else %}
-            <p>No investment data found. Please complete the questionnaire.</p>
+            <p>投資データが見つかりません。アンケートを完了してください。</p>
         {% endif %}
     </div>
 
     <footer class="footer">
-        <p>Need more guidance? <a href="#">Contact an advisor</a> or <a href="#">read our beginner's guide</a>.</p>
-        <p>All investments carry risks. Please consult a financial expert before making decisions.</p>
+        <p>より詳しい情報が必要ですか？ <a href="#">アドバイザーに相談する</a> または <a href="#">初心者向けガイドを読む</a>。</p>
+        <p>すべての投資にはリスクが伴います。投資の決定をする前に、金融専門家に相談してください。</p>
     </footer>
 
     <script>
         function viewInvestmentDetails(investmentType) {
-            alert(`More details about ${investmentType} investing...`);
+            alert(`${investmentType} の投資について詳しく見る...`);
         }
     </script>
 </body>

@@ -1,6 +1,6 @@
 [
     {
-        "name": "Certificates of Deposit",
+        "name": "定期預金",
         "RiskLevel": 10.0,
         "Longterm": 50.0,
         "Affordability": 90.0,
@@ -9,9 +9,9 @@
         "TaxAdvantages": 40.0,
         "Tangibility": 0.0,
         "Diversification": 10.0,
-        "EstimatedGrowth": "2–3% annually",
-        "RiskLabel": "Very Low",
-        "LiquidityLabel": "High"
+        "EstimatedGrowth": "年利2〜3%",
+        "RiskLabel": "非常に低い",
+        "LiquidityLabel": "高い"
     },
     {
         "name": "iDeCo",
@@ -23,12 +23,12 @@
         "TaxAdvantages": 100.0,
         "Tangibility": 0.0,
         "Diversification": 50.0,
-        "EstimatedGrowth": "4–6% annually",
-        "RiskLabel": "Low",
-        "LiquidityLabel": "Very Low"
+        "EstimatedGrowth": "年利4〜6%",
+        "RiskLabel": "低い",
+        "LiquidityLabel": "非常に低い"
     },
     {
-        "name": "Bonds",
+        "name": "債券",
         "RiskLevel": 20.0,
         "Longterm": 70.0,
         "Affordability": 70.0,
@@ -37,9 +37,9 @@
         "TaxAdvantages": 50.0,
         "Tangibility": 0.0,
         "Diversification": 60.0,
-        "EstimatedGrowth": "3–5% annually",
-        "RiskLabel": "Low",
-        "LiquidityLabel": "Moderate"
+        "EstimatedGrowth": "年利3〜5%",
+        "RiskLabel": "低い",
+        "LiquidityLabel": "中程度"
     },
     {
         "name": "NISA",
@@ -51,12 +51,12 @@
         "TaxAdvantages": 90.0,
         "Tangibility": 0.0,
         "Diversification": 70.0,
-        "EstimatedGrowth": "5–8% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "Moderate"
+        "EstimatedGrowth": "年利5〜8%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "中程度"
     },
     {
-        "name": "Precious Metals",
+        "name": "貴金属",
         "RiskLevel": 30.0,
         "Longterm": 70.0,
         "Affordability": 60.0,
@@ -65,12 +65,12 @@
         "TaxAdvantages": 10.0,
         "Tangibility": 100.0,
         "Diversification": 50.0,
-        "EstimatedGrowth": "4–6% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "Low"
+        "EstimatedGrowth": "年利4〜6%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "低い"
     },
     {
-        "name": "Mutual Funds",
+        "name": "投資信託",
         "RiskLevel": 50.0,
         "Longterm": 80.0,
         "Affordability": 70.0,
@@ -79,12 +79,12 @@
         "TaxAdvantages": 50.0,
         "Tangibility": 0.0,
         "Diversification": 80.0,
-        "EstimatedGrowth": "6–9% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "Moderate"
+        "EstimatedGrowth": "年利6〜9%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "中程度"
     },
     {
-        "name": "Index Funds",
+        "name": "インデックスファンド",
         "RiskLevel": 40.0,
         "Longterm": 90.0,
         "Affordability": 80.0,
@@ -93,12 +93,12 @@
         "TaxAdvantages": 40.0,
         "Tangibility": 0.0,
         "Diversification": 80.0,
-        "EstimatedGrowth": "7–10% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "Moderate"
+        "EstimatedGrowth": "年利7〜10%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "中程度"
     },
     {
-        "name": "Exchange-Traded Funds",
+        "name": "上場投資信託（ETF）",
         "RiskLevel": 50.0,
         "Longterm": 85.0,
         "Affordability": 75.0,
@@ -107,12 +107,12 @@
         "TaxAdvantages": 50.0,
         "Tangibility": 0.0,
         "Diversification": 90.0,
-        "EstimatedGrowth": "8–12% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "High"
+        "EstimatedGrowth": "年利8〜12%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "高い"
     },
     {
-        "name": "Gold",
+        "name": "金（ゴールド）",
         "RiskLevel": 30.0,
         "Longterm": 70.0,
         "Affordability": 60.0,
@@ -121,12 +121,12 @@
         "TaxAdvantages": 10.0,
         "Tangibility": 100.0,
         "Diversification": 50.0,
-        "EstimatedGrowth": "5–7% annually",
-        "RiskLabel": "Moderate",
-        "LiquidityLabel": "Moderate"
+        "EstimatedGrowth": "年利5〜7%",
+        "RiskLabel": "中程度",
+        "LiquidityLabel": "中程度"
     },
     {
-        "name": "Real Estate",
+        "name": "不動産",
         "RiskLevel": 60.0,
         "Longterm": 90.0,
         "Affordability": 40.0,
@@ -135,12 +135,12 @@
         "TaxAdvantages": 70.0,
         "Tangibility": 100.0,
         "Diversification": 70.0,
-        "EstimatedGrowth": "7–10% annually",
-        "RiskLabel": "High",
-        "LiquidityLabel": "Very Low"
+        "EstimatedGrowth": "年利7〜10%",
+        "RiskLabel": "高い",
+        "LiquidityLabel": "非常に低い"
     },
     {
-        "name": "Stocks",
+        "name": "株式",
         "RiskLevel": 70.0,
         "Longterm": 80.0,
         "Affordability": 50.0,
@@ -149,12 +149,12 @@
         "TaxAdvantages": 40.0,
         "Tangibility": 0.0,
         "Diversification": 90.0,
-        "EstimatedGrowth": "10–15% annually",
-        "RiskLabel": "High",
-        "LiquidityLabel": "High"
+        "EstimatedGrowth": "年利10〜15%",
+        "RiskLabel": "高い",
+        "LiquidityLabel": "高い"
     },
     {
-        "name": "Cryptocurrency",
+        "name": "暗号通貨",
         "RiskLevel": 90.0,
         "Longterm": 60.0,
         "Affordability": 40.0,
@@ -163,8 +163,8 @@
         "TaxAdvantages": 20.0,
         "Tangibility": 0.0,
         "Diversification": 60.0,
-        "EstimatedGrowth": "15–25% annually",
-        "RiskLabel": "Very High",
-        "LiquidityLabel": "Very High"
+        "EstimatedGrowth": "年利15〜25%",
+        "RiskLabel": "非常に高い",
+        "LiquidityLabel": "非常に高い"
     }
 ]
