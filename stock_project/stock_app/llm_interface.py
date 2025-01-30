@@ -1,5 +1,10 @@
-from openai import OpenAI
+import os
 import json
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Load environment variables from .env
+load_dotenv()
 
 def load_config(config_file):
     with open(config_file, 'r') as file:
@@ -17,11 +22,15 @@ def chatgpt_interface(config_file='backend/llm_interface_conf.json', system_role
     Returns:
         str: Response from ChatGPT.
     """
-    # Load configuration
+    # Load configuration (excluding API key)
     config = load_config(config_file)
 
-    # Extract API configuration
-    api_key     = config['llm_interface_conf']['chatgpt_interface']['api_key']
+    # Load API key from environment
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("API key is missing. Please set OPENAI_API_KEY in .env")
+
+    # Extract other API configuration settings
     model       = config['llm_interface_conf']['chatgpt_interface']['model']
     max_tokens  = config['llm_interface_conf']['chatgpt_interface']['max_tokens']
     temperature = config['llm_interface_conf']['chatgpt_interface']['temperature']
