@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STONKS</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'reset.css' %}">
+</head>
+<header>
+  <div class="topheader">
+    <div class="sitename">
+      <h1>WEBSITE NAME</h1>
+    </div>
+    <nav class="tabs">
+      <a href="#">Home</a>
+      <a href="#">Dashboard</a>
+      <a href="#">Search</a>
+      <a href="#">Browse</a>
+    </nav>
+    <div class="user">
+      <h2>username</h2>
+    </div>
+  </div>
+</header>
+<body>
+  <div class="userinfo">
+    <div class="balanceinfo">
+      <p>$</p>
+      <h1>68,575</h1>
+      <a>in stocks</a>
+    </div>
+    <div class="mystockinfo">
+      <div class="summary">
+        <a>stock summary</a>
+        <p>looki'n good</p>
+      </div>
+      <div class="company">
+        <a>hottest in following</a>
+        <p>nvidia</p>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <section class="toppicks">
+      <h1>Top Picks</h1>
+      <a>Hottest Companies Now</a>
+      <div class="background"></div>
+      <div class="scrollable">
+        {% for i in info %}
+          <div class="card">
+            <h2>{{ i.symbol }}</h2>
+            <p>{{ i.company_name }}</p>
+            <p>Stock Value: ${{ i.current_price }}</p>
+            <canvas id="stockChart{{ forloop.counter }}" width="400" height="200"></canvas>
+            <!-- <script>
+              const stockData{{ forloop.counter }} = {{ i.graph|safe }};
+            </script> -->
+          </div>
+        {% empty %}
+          <p>No data available</p>
+        {% endfor %}
+      </div>
+    </section>
+    
+    <section class="statistics">
+      <h1>statistics</h1>
+      <section class="background2"></section>
+      <div class="mystockgraph"></div>
+      <div class="bestboughtgraph"></div>
+      <div class="buysellorkeep"></div>
+      <div class="nikkei"></div>
+      <div class="nasdaq"></div>
+      <div class="oil"></div>
+      <div class="gold"></div>
+    </section>
+  </div>
+</body>
+</html>

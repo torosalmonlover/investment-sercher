@@ -1,0 +1,5 @@
+.env
+keys.env
+config.json
+stock_app/__pycache__/
+.DS_Store

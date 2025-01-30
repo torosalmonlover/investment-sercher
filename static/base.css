@@ -1,0 +1,205 @@
+html {
+    background-color: rgb(200, 200, 200);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    width: 100vw;
+    font-family: "TTfors-thin", sans-serif;
+}
+@font-face {
+    font-family: 'TTfors-thin';
+    src: url('/static/fonts/tt_fors/TT Fors Trial Light.ttf');
+}
+@font-face {
+    font-family: 'TTfors-regular';
+    src: url('/static/fonts/tt_fors/TT Fors Trial Regular.ttf');
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+header {
+    width: 100%;
+}
+.topheader {
+    display: flex;
+    align-items: center;
+    padding: 30px 30px 30px;
+}
+.topheader h1 {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 28px;
+    font-family: "Copperplate", fantasy;
+}
+.topheader .user {
+    font-size: 18px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.topheader .tabs {
+    display: flex;
+    gap: 40px;
+    margin: auto;
+}
+.topheader .tabs h2 {
+    font-size: 18px;
+}
+.userinfo {
+    display: flex;
+    align-items: center;
+    margin-left: 10vw;
+    margin-top: 6vh;
+}
+.balanceinfo {
+    display: flex;
+    align-items: baseline;
+}
+.balanceinfo p {
+    font-size: 50px;
+    padding-right: 15px;
+}
+.balanceinfo h1 {
+    font-size: 100px;
+}
+.mystockinfo {
+    margin-left: 8vw;
+    display: flex;
+}
+.mystockinfo .summary {
+    margin-right: 6vw;
+}
+.mystockinfo p {
+    font-family: "TTfors-regular", sans-serif;
+}
+.toppicks h1 {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px 30px 0px 30px;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-family: "TTfors-regular", sans-serif;
+}
+.toppicks a {
+    position: absolute;
+    z-index: 1;
+    left: 50px;
+    margin-top: 45px;
+}
+.toppicks .background {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 40vw;
+    height: 1080px;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    z-index: 0;
+    flex: 1 1 40vw;
+}
+.toppicks .scrollable {
+    width: 36vw;
+    height: 960px;
+    position: absolute;
+    z-index: 2;
+    margin-left: 30px;
+    margin-top: 90px;
+    left: 2vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .card {
+        margin-bottom: 10px;
+        height: 200px;
+        width: 100%;
+        background-color: white;
+        border-radius: 9px;
+    }
+}
+.flex {
+    display: flex;
+    margin: 10px 30px 0px 30px;
+    justify-content: space-between;
+    gap: 5px;
+}
+.statistics h1 {
+    text-align: center;
+    font-size: 18px;
+    width: 150px;
+    padding: 10px 30px 0px 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-family: "TTfors-regular", sans-serif;
+}
+.statistics .background2 {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    right: 30px;
+    width: 55vw;
+    height: 1080px;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    z-index: 0;
+    flex: 1 1 55vw;
+}
+.statistics div {
+    position: absolute;
+    z-index: 2;
+    margin-top: 90px;
+    right: 30px;
+    margin-right: 2vw;
+    height: 300px;
+    width: 51vw;
+    background-color: white;
+    border-radius: 9px;
+}
+.statistics .mystockgraph {
+    margin-top: 90px;
+}
+.statistics .bestboughtgraph {
+    margin-top: 410px;
+    width: 24.5vw;
+    margin-right: 28.5vw;
+    height: 200px;
+}
+.statistics .buysellorkeep {
+    margin-top: 410px;
+    width: 24.5vw;
+    margin-right: 2vw;
+    height: 200px;
+}
+.statistics .nikkei {
+    margin-top: 630px;
+    width: 24.5vw;
+    margin-right: 2vw;
+    height: 200px;
+}
+.statistics .nasdaq {
+    margin-top: 630px;
+    width: 24.5vw;
+    margin-right: 28.5vw;
+    height: 200px;
+}
+.statistics .oil {
+    margin-top: 850px;
+    width: 24.5vw;
+    margin-right: 2vw;
+    height: 200px;
+}
+.statistics .gold {
+    margin-top: 850px;
+    width: 24.5vw;
+    margin-right: 28.5vw;
+    height: 200px;
+}

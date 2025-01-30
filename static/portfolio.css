@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  .question {
+    margin-bottom: 1.5rem;
+  }
+  
+  .question label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  select, input[type="checkbox"], input[type="radio"] {
+    margin-top: 0.5rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 0.4rem;
+    font-size: 1rem;
+    background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+    box-shadow: inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff;
+    transition: all 0.3s;
+  }
+  
+  select:hover, input[type="checkbox"]:hover, input[type="radio"]:hover {
+    border-color: #007bff;
+    background: linear-gradient(145deg, #e9f0ff, #d4e0f7);
+    box-shadow: inset 2px 2px 4px #b0c3e6, inset -2px -2px 4px #ffffff;
+  }
+  
+  input[type="checkbox"]:checked {
+    background: linear-gradient(145deg, #0078e0, #005bb5);
+    box-shadow: inset 2px 2px 4px #004080, inset -2px -2px 4px #0090ff;
+  }
+  
+  .btn-submit {
+    background: linear-gradient(145deg, #0078e0, #005bb5);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 3px 3px 6px #004080, -3px -3px 6px #0090ff;
+  }
+  
+  .btn-submit:hover {
+    background: linear-gradient(145deg, #005bb5, #003d7a);
+    box-shadow: 3px 3px 6px #002750, -3px -3px 6px #0069d9;
+  }
+  
+  .form-actions {
+    text-align: center;
+  }
+  
