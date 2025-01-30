@@ -163,10 +163,11 @@ def submit_answers(request):
             "redirect_url": "/recommended/"
         }, status=200)
 
-        # ✅ Process AI and update DB in a separate thread
         def process_ai():
             try:
+                print("✅ AI Processing Started for:", username)
                 ai_explanation = ai_advice(preferences, best_match)
+                print("✅ AI Generated Response:", ai_explanation)
 
                 # ✅ Open a new database connection for the AI processing
                 db_conn = get_db_connection()
@@ -185,6 +186,7 @@ def submit_answers(request):
                     (ai_explanation, username)
                 )
                 db_conn.commit()
+                print("✅ AI Advice Saved to DB for:", username)
 
                 db_cursor.close()
                 db_conn.close()
@@ -201,6 +203,7 @@ def submit_answers(request):
         return response
 
     except Exception as e:
+        print("❌ Main Processing Error:", str(e))
         return JsonResponse({"error": str(e)}, status=400)
 
 def get_user_info(request):
