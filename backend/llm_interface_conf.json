@@ -1,0 +1,10 @@
+{
+    "llm_interface_conf": {
+        "chatgpt_interface": {
+            "api_key": "$OPENAI_API_KEY",
+            "model": "gpt-3.5-turbo",
+            "max_tokens": 300,
+            "temperature": 0.5
+        }
+    }
+}

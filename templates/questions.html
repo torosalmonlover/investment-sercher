@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Questionnaire</title>
+  <link rel="stylesheet" href="{% static 'portfolio.css' %}">
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <script src="{% static 'script.js' %}" defer></script>
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let user = localStorage.getItem("username");
+
+        // If no user is found, redirect to login page
+        if (!user) {
+            alert("You need to log in first!");
+            location.href = "/login";  // Redirect to login page
+        }
+    });
+</script>
+<body>
+  <header class="header">
+    <h1>Investment Questionnaire</h1>
+  </header>
+  <main class="container">
+    <form id="questionnaire-form" onsubmit="submitForm(event)">
+      {% csrf_token %}
+      
+      <!-- Question 1 -->
+      <div class="question">
+        <label>1. What is your investment goal?</label>
+        <select name="investment_goal" data-preference="RiskLevel,Longterm" data-points="2,2,1,3,0,2" required>
+          <option value="growth" data-points="2,2">Growth</option> <!-- RiskLevel +2, Longterm +2 -->
+          <option value="income" data-points="1,3">Income</option> <!-- RiskLevel +1, Longterm +3 -->
+          <option value="safety" data-points="0,2">Safety</option> <!-- RiskLevel +0, Longterm +2 -->
+        </select>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question">
+        <label>2. What is your risk tolerance?</label>
+        <select name="risk_tolerance" data-preference="RiskLevel" data-points="0,2,4" required>
+          <option value="low" data-points="0">Low</option> <!-- RiskLevel +0 -->
+          <option value="medium" data-points="2">Medium</option> <!-- RiskLevel +2 -->
+          <option value="high" data-points="4">High</option> <!-- RiskLevel +4 -->
+        </select>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question">
+        <label>3. What is your investment horizon?</label>
+        <select name="investment_horizon" data-preference="Longterm" data-points="-4,2,4" required>
+          <option value="short-term" data-points="0">Short-term</option> <!-- Longterm 0 -->
+          <option value="medium-term" data-points="2">Medium-term</option> <!-- Longterm +2 -->
+          <option value="long-term" data-points="4">Long-term</option> <!-- Longterm +4d -->
+        </select>
+      </div>
+
+      <div class="question">
+        <label>4. How much can you afford to invest initially?</label>
+        <select name="affordability" data-preference="Affordability" data-points="1,2,4" required>
+          <option value="low" data-points="1">Low</option> <!-- Affordability +1 -->
+          <option value="medium" data-points="2">Medium</option> <!-- Affordability +2 -->
+          <option value="high" data-points="4">High</option> <!-- Affordability +4 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>5. Will you need access to this money soon?</label>
+        <select name="liquidity" data-preference="Liquidity,Longterm" data-points="4,0,0,2" required>
+          <option value="yes" data-points="4,0">Yes</option> <!-- Liquidity +4 -->
+          <option value="no" data-points="0,2">No</option> <!-- Longterm +2 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>6. Are you comfortable managing investments yourself?</label>
+        <select name="self_management" data-preference="Difficulty" data-points="2,0" required>
+          <option value="yes" data-points="2">Yes</option> <!-- Difficulty +2 -->
+          <option value="no" data-points="0">No</option> <!-- Difficulty +0 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>7. Are you looking for tax advantages?</label>
+        <select name="tax_advantages" data-preference="TaxAdvantages" data-points="1,0" required>
+          <option value="yes" data-points="1">Yes</option> <!-- TaxAdvantages +1 -->
+          <option value="no" data-points="0">No</option> <!-- TaxAdvantages +0 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>8. Do you have experience with complex or speculative investments?</label>
+        <select name="experience" data-preference="Difficulty" data-points="4,0" required>
+          <option value="yes" data-points="4">Yes</option> <!-- Difficulty +2 -->
+          <option value="no" data-points="0">No</option> <!-- Difficulty +0 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>9. Do you prefer tangible assets (e.g., real estate, gold)?</label>
+        <select name="tangible_assets" data-preference="Tangibility" data-points="3,0" required>
+          <option value="yes" data-points="3">Yes</option> <!-- Tangibility +3 -->
+          <option value="no" data-points="0">No</option> <!-- Tangibility +0 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>10. How important is diversification to you?</label>
+        <select name="diversification" data-preference="Diversification" data-points="1,2,3" required>
+          <option value="low" data-points="1">Low</option> <!-- Diversification +1 -->
+          <option value="medium" data-points="2">Medium</option> <!-- Diversification +2 -->
+          <option value="high" data-points="3">High</option> <!-- Diversification +3 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>11. Are you saving for a specific purpose (e.g., retirement, education)?</label>
+        <select name="specific_purpose" data-preference="Longterm" data-points="1,2" required>
+          <option value="yes" data-points="1">Yes</option> <!-- Longterm +1 -->
+          <option value="no" data-points="2">No</option> <!-- Longterm +2 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>12. Do you have concerns about inflation eroding your savings?</label>
+        <select name="inflation_concern" data-preference="RiskLevel" data-points="3,0" required>
+          <option value="yes" data-points="3">Yes</option> <!-- RiskLevel +3 -->
+          <option value="no" data-points="0">No</option> <!-- RiskLevel +0 -->
+        </select>
+      </div>
+    
+      <div class="question">
+        <label>13. What is your current monthly income?</label>
+        <select name="monthly_income" data-preference="Affordability" data-points="1,2,3" required>
+          <option value="low" data-points="1">Low</option> <!-- Affordability +1 -->
+          <option value="medium" data-points="2">Medium</option> <!-- Affordability +2 -->
+          <option value="high" data-points="3">High</option> <!-- Affordability +3 -->
+        </select>
+      </div>
+
+      <div class="question">
+        <label>15. Do you have any existing investments or savings?</label>
+        <select name="existing_investments" data-preference="Affordability" data-points="2,0" required>
+          <option value="yes" data-points="2">Yes</option> <!-- Affordability +2 -->
+          <option value="no" data-points="0">No</option> <!-- Affordability +0 -->
+        </select>
+      </div>
+      
+      <!-- Question 16 -->
+      <div class="question">
+        <label>16. What percentage of your income are you willing to allocate for investments?</label>
+        <select name="income_allocation" data-preference="Affordability" data-points="1,2,3" required>
+          <option value="low" data-points="1">Less than 10%</option> <!-- Affordability +1 -->
+          <option value="medium" data-points="2">10%-20%</option> <!-- Affordability +2 -->
+          <option value="high" data-points="3">More than 20%</option> <!-- Affordability +3 -->
+        </select>
+      </div>
+      
+      <!-- Question 17 -->
+      <div class="question">
+        <label>17. Are you carrying any significant debt? (e.g., loans, credit cards)</label>
+        <select name="significant_debt" data-preference="RiskLevel,Liquidity" data-points="0,4,1,0" required>
+          <option value="yes" data-points="0,4">Yes</option> <!-- RiskLevel +0 Liquidity +4 -->
+          <option value="no" data-points="1,0">No</option> <!-- RiskLevel +1 -->
+        </select>
+      </div>
+      
+      <!-- Question 18 -->
+      <div class="question">
+        <label>18. Are you currently contributing to a retirement plan (e.g., iDeCo, 401(k))?</label>
+        <select name="retirement_plan" data-preference="Longterm" data-points="3,0" required>
+          <option value="yes" data-points="3">Yes</option> <!-- Longterm +3 -->
+          <option value="no" data-points="0">No</option> <!-- Longterm +0 -->
+        </select>
+      </div>
+      
+      <!-- Question 19 -->
+      <div class="question">
+        <label>19. Do you wish to leave an inheritance for your family?</label>
+        <select name="inheritance_goal" data-preference="Longterm" data-points="3,0" required>
+          <option value="yes" data-points="3">Yes</option> <!-- Longterm +3 -->
+          <option value="no" data-points="0">No</option> <!-- Longterm +0 -->
+        </select>
+      </div>
+      
+      <!-- Question 20 -->
+      <div class="question">
+        <label>20. Do you prefer investments that are easy to transfer to heirs?</label>
+        <select name="transfer_to_heirs" data-preference="Longterm" data-points="2,0" required>
+          <option value="yes" data-points="2">Yes</option> <!-- Longterm +2 -->
+          <option value="no" data-points="0">No</option> <!-- Longterm +0 -->
+        </select>
+      </div>
+      
+      <!-- Question 21 -->
+      <div class="question">
+        <label>21. Are you concerned about estate or inheritance taxes?</label>
+        <select name="estate_taxes" data-preference="Affordability" data-points="2,0" required>
+          <option value="yes" data-points="2">Yes</option> <!-- Affordability +2 -->
+          <option value="no" data-points="0">No</option> <!-- Affordability +0 -->
+        </select>
+      </div>
+      
+      <!-- Question 22 -->
+      <div class="question">
+        <label>22. Do you want to invest in assets that preserve value over generations?</label>
+        <select name="preserve_value" data-preference="Tangibility" data-points="3,0" required>
+          <option value="yes" data-points="3">Yes</option> <!-- Tangibility +3 -->
+          <option value="no" data-points="0">No</option> <!-- Tangibility +0 -->
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Submit</button>
+      </div>
+    </form>
+    <script>
+        async function submitAnswers(parameters, maxParameters) {
+            try {
+                // Show loading message
+                document.querySelector(".btn-submit").innerText = "Processing...";
+                document.querySelector(".btn-submit").disabled = true;
+
+                // Send request to backend
+                const response = await fetch("/submit-answers/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ parameters, maxParameters })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    console.log("✅ Submission successful:", result);
+                    
+                    // ✅ Delay redirection slightly to ensure data is saved
+                    setTimeout(() => {
+                        window.location.href = "/recommended/";
+                    }, 2000); // Wait 2 seconds before redirecting
+                } else {
+                    console.error("❌ Submission failed:", result);
+                    alert("Error: " + result.error);
+                }
+            } catch (error) {
+                console.error("❌ Network or server error:", error);
+                alert("An unexpected error occurred.");
+            } finally {
+                // Re-enable the button after processing
+                document.querySelector(".btn-submit").innerText = "Submit";
+                document.querySelector(".btn-submit").disabled = false;
+            }
+        }
+    </script>
+  </main>
+</body>
+</html>
