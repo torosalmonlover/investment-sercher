@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized Investment Recommendations</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f7fa; color: #333; margin: 0; padding: 0; }
+        header { background-color: #0047ab; color: #fff; padding: 20px; text-align: center; }
+        .main { padding: 20px; }
+        .recommendation, .card { background-color: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); padding: 20px; margin-bottom: 20px; }
+        .cta button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #0047ab; color: #fff; cursor: pointer; }
+        .cta button:hover { background-color: #003380; }
+        .additional-recommendations { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .ai-response { background-color: #e9f5ff; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        .footer { background-color: #333; color: #fff; padding: 20px; text-align: center; }
+        .footer a { color: #4caf50; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Personalized Investment Recommendations</h1>
+        <p>Based on your preferences, we've tailored these investment opportunities for you.</p>
+    </header>
+
+    <div class="main">
+        {% if recommendations.recommended_vehicle %}
+            <div class="recommendation">
+                <h2>Recommended: {{ recommendations.recommended_vehicle.name }}</h2>
+                <p>Estimated Growth: {{ recommendations.recommended_vehicle.EstimatedGrowth }}</p>
+                <p>Risk Level: {{ recommendations.recommended_vehicle.RiskLabel }}</p>
+                <p>Liquidity: {{ recommendations.recommended_vehicle.LiquidityLabel }}</p>
+                <div class="cta">
+                    <button onclick="viewInvestmentDetails('{{ recommendations.recommended_vehicle.name }}')">View More</button>
+                </div>
+            </div>
+
+            <h2>Additional Investment Options</h2>
+            <div class="additional-recommendations">
+                {% for key, investment in recommendations.items %}
+                    {% if key != "recommended_vehicle" and investment %}
+                        <div class="card">
+                            <h3>{{ investment.name }}</h3>
+                            <p>Growth Potential: {{ investment.EstimatedGrowth }}</p>
+                            <p>Risk Level: {{ investment.RiskLabel }}</p>
+                            <p>Liquidity: {{ investment.LiquidityLabel }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- AI-Generated Explanation -->
+            <div class="ai-response">
+                <h2>AI Investment Advice</h2>
+                <p>{{ ai_advice }}</p>
+            </div>
+
+        {% else %}
+            <p>No investment data found. Please complete the questionnaire.</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        <p>Need more guidance? <a href="#">Contact an advisor</a> or <a href="#">read our beginner's guide</a>.</p>
+        <p>All investments carry risks. Please consult a financial expert before making decisions.</p>
+    </footer>
+
+    <script>
+        function viewInvestmentDetails(investmentType) {
+            alert(`More details about ${investmentType} investing...`);
+        }
+    </script>
+</body>
+</html>
